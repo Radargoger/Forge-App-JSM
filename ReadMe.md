@@ -1,4 +1,4 @@
-# SOCRadar Multi-Tenant Incident Management for Jira Service Management
+# Multi-Tenant Incident Management for Jira Service Management
 
 [![Atlassian Marketplace](https://img.shields.io/badge/Atlassian-Marketplace-blue)](https://marketplace.atlassian.com/)
 [![Forge](https://img.shields.io/badge/Forge-App-orange)](https://developer.atlassian.com/platform/forge/)
@@ -7,7 +7,7 @@
 
 > **BETA VERSION** - Early access release for evaluation and feedback
 
-Seamlessly integrate SOCRadar's security intelligence platform with Jira Service Management to automatically create and manage security incidents based on real-time threat alerts.
+Seamlessly integrate security intelligence platform with Jira Service Management to automatically create and manage security incidents based on real-time threat alerts.
 
 ---
 
@@ -29,7 +29,7 @@ Seamlessly integrate SOCRadar's security intelligence platform with Jira Service
 
 ## 🎯 Overview
 
-**SOCRadar Multi-Tenant Incident Management** is a Forge-based Atlassian app that bridges the gap between SOCRadar's threat intelligence platform and Jira Service Management. This integration automates the creation of security incidents in JSM based on real-time security alarms from SOCRadar, enabling security teams to:
+**Multi-Tenant Incident Management** is a Forge-based Atlassian app that bridges the gap between SOCRadar's threat intelligence platform and Jira Service Management. This integration automates the creation of security incidents in JSM based on real-time security alarms from SOCRadar, enabling security teams to:
 
 - **Automate incident response** workflows
 - **Centralize security operations** in Jira Service Management
@@ -41,7 +41,7 @@ Seamlessly integrate SOCRadar's security intelligence platform with Jira Service
 
 ✅ **Zero Code Deployment** - Forge-based app requiring no server infrastructure  
 ✅ **Enterprise Security** - All credentials encrypted using Forge secret storage  
-✅ **Multi-Tenant Support** - Designed for SOCRadar multi-tenant architecture  
+✅ **Multi-Tenant Support** - Designed for multi-tenant architecture  
 ✅ **Automated Sync** - Hourly scheduled synchronization + optional webhook triggers  
 ✅ **Admin Controls** - Granular permission-based configuration and management  
 
@@ -60,7 +60,7 @@ Seamlessly integrate SOCRadar's security intelligence platform with Jira Service
 
 - **React-based Admin Panel**: Modern, intuitive configuration interface
 - **Project Selection**: Auto-populated Jira project dropdown
-- **Connection Testing**: One-click SOCRadar API connection validation
+- **Connection Testing**: One-click API connection validation
 - **Sync Logs**: Real-time view of synchronization history and results
 - **Manual Sync**: On-demand synchronization with dry-run capability
 
@@ -75,7 +75,7 @@ Seamlessly integrate SOCRadar's security intelligence platform with Jira Service
 
 ### 🎯 Incident Management
 
-- **Priority Mapping**: Automatic Jira priority assignment based on SOCRadar severity
+- **Priority Mapping**: Automatic Jira priority assignment based on severity
   - CRITICAL → Highest
   - HIGH → High
   - MEDIUM → Medium
@@ -94,7 +94,7 @@ Seamlessly integrate SOCRadar's security intelligence platform with Jira Service
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     SOCRadar Platform                        │
+│                     Platform                        │
 │                 (Multi-Tenant Security API)                  │
 └───────────────────────┬─────────────────────────────────────┘
                         │
@@ -105,7 +105,7 @@ Seamlessly integrate SOCRadar's security intelligence platform with Jira Service
 │                    Forge App (Atlassian)                     │
 │  ┌──────────────────────────────────────────────────────┐   │
 │  │  Scheduled Trigger (Hourly)                          │   │
-│  │  • Fetches new alarms from SOCRadar                  │   │
+│  │  • Fetches new alarms from                  │   │
 │  │  • Creates Jira issues via asApp()                   │   │
 │  └──────────────────────────────────────────────────────┘   │
 │  ┌──────────────────────────────────────────────────────┐   │
@@ -143,7 +143,7 @@ Seamlessly integrate SOCRadar's security intelligence platform with Jira Service
 **Resolvers** (UI ↔ Backend communication):
 - `saveConfig`: Store encrypted configuration (admin only)
 - `getConfig`: Retrieve configuration with masked API key
-- `testConnection`: Validate SOCRadar API connectivity
+- `testConnection`: Validate API connectivity
 - `runManualSync`: Trigger manual synchronization (admin only)
 - `getSyncLogs`: Retrieve synchronization history
 - `resetLastAlarmId`: Reset sync state
@@ -219,7 +219,7 @@ permissions:
   external:
     fetch:
       backend:
-        - platform.socradar.com  # SOCRadar API access
+        - platform.socradar.com  # API access
 ```
 
 ### Security Contact
@@ -234,7 +234,7 @@ For security issues or vulnerabilities, please contact:
 ### Prerequisites
 
 - Jira Service Management Cloud instance
-- SOCRadar Multi-Tenant account with API access
+- Multi-Tenant account with API access
 - Jira Administrator permissions
 - Node.js 18+ (for development)
 - Forge CLI (for deployment)
@@ -248,7 +248,7 @@ For security issues or vulnerabilities, please contact:
 
 2. **Search for "SOCRadar"**
    ```
-   Search: "SOCRadar Multi-Tenant Incident Management"
+   Search: "Multi-Tenant Incident Management"
    ```
 
 3. **Install the App**
@@ -292,17 +292,17 @@ forge deploy --environment production --no-verify
 ### Step 1: Access Admin Panel
 
 1. Navigate to **Jira Settings** (⚙️)
-2. Go to **Apps** → **SOCRadar Integration Settings**
+2. Go to **Apps** → **Integration Settings**
 
-### Step 2: Configure SOCRadar Connection
+### Step 2: Configure Connection
 
 Fill in the following fields:
 
 | Field | Description | Required | Example |
 |-------|-------------|----------|---------|
-| **SOCRadar Tenant ID** | Your multi-tenant company ID | ✅ | `123456` |
-| **SOCRadar API Key** | API key from SOCRadar dashboard | ✅ | `sk_live_...` |
-| **SOCRadar Base URL** | API endpoint (default is pre-filled) | ❌ | `https://platform.socradar.com` |
+| **Tenant ID** | Your multi-tenant company ID | ✅ | `123456` |
+| **API Key** | API key from dashboard | ✅ | `sk_live_...` |
+| **Base URL** | API endpoint (default is pre-filled) | ❌ | `https://platform.socradar.com` |
 
 ### Step 3: Configure Jira Settings
 
@@ -311,12 +311,12 @@ Fill in the following fields:
 | **Jira Project** | Target project for incidents | ✅ | `SEC` (Security) |
 | **Issue Type** | Type of issues to create | ❌ | `Incident` (default: Task) |
 | **Default Assignee** | Auto-assign incidents | ❌ | John Doe |
-| **Show SOCRadar Source** | Include "SOCRadar" in summary | ❌ | ✅ (recommended) |
+| **Show Source** | Include "SOCRadar" in summary | ❌ | ✅ (recommended) |
 
 ### Step 4: Test Connection
 
 Click **"Test Connection"** to verify:
-- SOCRadar API connectivity
+- API connectivity
 - API key validity
 - Multi-tenant access
 - Number of available alarms
@@ -349,7 +349,7 @@ For real-time synchronization:
 
 1. **Get Webhook URL** from app settings
 2. **Configure in SOCRadar**:
-   - Navigate to SOCRadar → Settings → Webhooks
+   - Navigate to → Settings → Webhooks
    - Add new webhook with URL from step 1
    - Set webhook token (custom secret)
 3. **Update App Configuration**:
@@ -364,7 +364,7 @@ For real-time synchronization:
 
 Once configured, the app automatically:
 - ✅ Runs hourly scheduled sync
-- ✅ Fetches new alarms from SOCRadar (OPEN status only)
+- ✅ Fetches new alarms from (OPEN status only)
 - ✅ Creates Jira issues with proper priority mapping
 - ✅ Tracks last synced alarm ID to prevent duplicates
 - ✅ Logs all synchronization activity
@@ -408,7 +408,7 @@ Admin Panel → Advanced → Reset Last Alarm ID
 
 ## 📚 API Reference
 
-### SOCRadar API Integration
+### API Integration
 
 **Endpoint**: `/api/v1/multi-tenant/{tenant_id}/incidents`
 
@@ -454,7 +454,7 @@ Admin Panel → Advanced → Reset Last Alarm ID
 {
   "fields": {
     "project": { "key": "SEC" },
-    "summary": "SOCRadar - 12345 - Suspicious Activity Detected",
+    "summary": "- 12345 - Suspicious Activity Detected",
     "description": {
       "type": "doc",
       "version": 1,
@@ -493,7 +493,7 @@ Content-Type: application/json
 
 ### Common Issues
 
-#### 1. "SOCRadar configuration not found"
+#### 1. "configuration not found"
 
 **Cause**: App not configured yet  
 **Solution**:
@@ -517,23 +517,23 @@ Content-Type: application/json
 1. Check sync logs for specific error message
 2. Verify project exists and is accessible
 3. Confirm issue type is available in project
-4. Test connection to both SOCRadar and Jira
+4. Test connection to both and Jira
 ```
 
-#### 3. "SOCRadar API connection failed"
+#### 3. "API connection failed"
 
 **Possible Causes**:
 - Invalid API key
 - Incorrect tenant ID
 - Network firewall blocking requests
-- SOCRadar API downtime
+- API downtime
 
 **Solution**:
 ```
-1. Verify API key in SOCRadar dashboard
+1. Verify API key in dashboard
 2. Confirm tenant ID is correct
 3. Check Atlassian network status
-4. Contact SOCRadar support
+4. Contact support
 ```
 
 #### 4. Duplicate Issues Created
@@ -555,7 +555,7 @@ Content-Type: application/json
 
 **Solution**:
 ```
-1. Verify webhook URL in SOCRadar matches app URL
+1. Verify webhook URL in matches app URL
 2. Confirm webhook token matches in both systems
 3. Test webhook with manual trigger
 4. Check app logs for authentication errors
@@ -577,7 +577,7 @@ forge logs --tail
 1. **Check Sync Logs**: Admin Panel → Sync Logs
 2. **Review App Logs**: `forge logs --tail`
 3. **Test Components**:
-   - SOCRadar connection
+   - connection
    - Jira project access
    - Webhook authentication
 4. **Contact Support**: integration@socradar.io
@@ -590,7 +590,7 @@ forge logs --tail
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Alarms per Page | 50 | SOCRadar API limit |
+| Alarms per Page | 50 | API limit |
 | Sync Frequency | 1 hour | Scheduled trigger interval |
 | Max Log Entries | 100 | Rotating log storage |
 | API Call Timeout | 30s | Forge default |
@@ -619,11 +619,11 @@ forge logs --tail
 
 ### Planned Features
 
-- [ ] **Bi-directional Sync**: Update SOCRadar when Jira status changes
-- [ ] **Custom Field Mapping**: Map SOCRadar fields to custom Jira fields
+- [ ] **Bi-directional Sync**: Update when Jira status changes
+- [ ] **Custom Field Mapping**: Map fields to custom Jira fields
 - [ ] **Filtering Rules**: Sync only specific alarm types or severities
 - [ ] **Email Notifications**: Alert admins on sync failures
-- [ ] **Dashboard Widget**: Display SOCRadar metrics in Jira dashboard
+- [ ] **Dashboard Widget**: Display metrics in Jira dashboard
 - [ ] **Bulk Operations**: Batch update/close incidents
 - [ ] **Advanced Logging**: Exportable CSV sync reports
 
@@ -645,13 +645,9 @@ Please submit feedback to: **integration@socradar.io**
 ### Documentation
 
 - [Forge Documentation](https://developer.atlassian.com/platform/forge/)
-- [SOCRadar API Docs](https://platform.socradar.com/docs/api)
 - [Jira REST API v3](https://developer.atlassian.com/cloud/jira/platform/rest/v3/)
 
-### Community
 
-- [Atlassian Community](https://community.atlassian.com)
-- [SOCRadar Support Portal](https://support.socradar.com)
 
 ### Contact
 
@@ -659,35 +655,7 @@ For technical support or questions:
 
 📧 **Email**: integration@socradar.io  
 🌐 **Website**: https://www.socradar.io  
-💬 **Support Portal**: https://support.socradar.com
 
-### Enterprise Support
-
-For enterprise customers, dedicated support is available:
-- Priority email support
-- Custom integration assistance
-- Training and onboarding
-- SLA-backed response times
-
-Contact your SOCRadar account manager for details.
-
----
-
-## 📄 License
-
-Copyright © 2025 SOCRadar Cyber Intelligence Inc.
-
-Licensed under the ISC License.
-
----
-
-## 🙏 Acknowledgments
-
-- Built on [Atlassian Forge](https://developer.atlassian.com/platform/forge/)
-- Powered by [SOCRadar](https://www.socradar.io) security intelligence
-- UI components from [React](https://react.dev/)
-
----
 
 ## 📝 Changelog
 
@@ -701,7 +669,7 @@ Licensed under the ISC License.
 - ✨ React-based admin configuration UI
 - ✨ Manual sync with dry-run mode
 - ✨ Webhook support for real-time sync
-- ✨ Priority mapping from SOCRadar severity
+- ✨ Priority mapping from  severity
 - ✨ Sync logs viewer
 - ✨ Connection testing
 
@@ -718,9 +686,3 @@ Licensed under the ISC License.
 - ⚡ ADF-formatted issue descriptions
 - ⚡ HTML sanitization with cleanHtml()
 - ⚡ Pagination support for large alarm sets
-
----
-
-**Made with ❤️ by SOCRadar**
-
-*Protecting organizations from cyber threats, one alert at a time.*
